@@ -1,4 +1,7 @@
 // TODO: Create a function that returns a license badge based on which license is passed in
+
+const { title } = require("process");
+
 // If there is no license, return an empty string
 function renderLicenseBadge(license) {}
 
@@ -18,3 +21,13 @@ function generateMarkdown(data) {
 }
 
 module.exports = generateMarkdown;
+
+
+function (){
+  
+
+  return
+  ${renderLicenseBadge("MIT")}
+}
+
+## Tu
