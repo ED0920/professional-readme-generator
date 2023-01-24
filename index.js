@@ -1,15 +1,10 @@
-// how we import inqurier into our file
+// import inqurier into our file
 const inquirer = require("inquirer");
 const generateBadge = require("./utils/generateMarkdown");
 
-// fs is a Node standard library package for readina nd writing files
-//
 const fs = require("fs");
 
-// TODO: Include packages needed for this application
-
-// TODO: Create an array of questions for user input
-// came enter into our function
+// array of questions for user input
 const questions = [
   {
     type: "input",
@@ -59,9 +54,7 @@ const questions = [
   },
 ];
 
-// TODO: Create a function to write README file
-// inqurier requires specific version
-// firstly pass questions through enquire prompt, then response. response will be generate once all questions have been entered
+//prompt to generate ReadMe file, ReadMe file Layout
 inquirer.prompt(questions).then((response) => {
   const {
     title,
@@ -117,9 +110,9 @@ ${test}
 If you have any questions please reach me on [GitHub](https://github.com/${username}) or contact me via my email ${email}.
 `;
 
-  writeToFile(readMe);
+  writeToFile(title, readMe);
 });
 
-function writeToFile(data) {
-  fs.writeFileSync("README.md", data);
+function writeToFile(filename, data) {
+  fs.writeFileSync(`${filename}.md`, data);
 }
