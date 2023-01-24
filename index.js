@@ -1,15 +1,10 @@
 // how we import inqurier into our file
 const inquirer = require("inquirer");
+const generateBadge = require("./utils/generateMarkdown");
+
 // fs is a Node standard library package for readina nd writing files
 //
 const fs = require("fs");
-
-// inquirer.createPromptModule([
-//     {
-//         type:"input"
-//         message: ""
-//     }
-// ])
 
 // TODO: Include packages needed for this application
 
@@ -44,13 +39,13 @@ const questions = [
   {
     type: "list",
     message: "What kind of licence does your project have?",
-    choices: ["MIT", "APCHE 2.0", "GPL 3.0", "BSD 3", "None"],
+    choices: ["MIT", "APACHE 2.0", "GPL 3.0", "BSD 3", "None"],
     name: "licence",
   },
   {
     type: "input",
-    message: "Please enter your github username.",
-    name: "Contributing",
+    message: "Add contributing guidelines",
+    name: "contributing",
   },
   {
     type: "input",
@@ -71,62 +66,58 @@ inquirer.prompt(questions).then((response) => {
   const {
     title,
     description,
-    installations,
+    installation,
     usage,
-    contribution,
+    contributing,
     test,
     licence,
     username,
     email,
   } = response;
 
-  const readMd = `# ${title}
+  const badgeLink = generateBadge(licence);
+  const readMe = `
+# ${title}
 
-   
+${badgeLink}
 
-    ## Description
-    ${description}
+## Description
+${description}
 
-    ## Table of contents
-    
-    [Installation](#installation)
-    
-    [Usage](#usage)
-    
-    [Licence](#licence)
-    
-    [Contributing](#contributing)
-    
-    [Test](#test)
-    
-    [Questions](#questions)
-    
-    ## Installation
-    ${installations}
+## Table of contents
 
-    ## Usage
-    ${usage}
-    
-    ## Licence
-    ${licence}
+[Installation](#installation)
 
-    ## Contributing
-    ${contribution}
-    
-    ## Test
-    ${test}
-    
-    ## Questions
-    ${questions}
+[Usage](#usage)
 
-    Github Profile: 
-    ${username}
+[Licence](#licence)
 
-    Email address:
-    ${email}
-    `;
+[Contributing](#contributing)
 
-  writeToFile(readMd);
+[Test](#test)
+
+[Questions](#questions)
+
+## Installation
+${installation}
+
+## Usage
+${usage}
+
+## Licence
+${licence}
+
+## Contributing
+${contributing}
+
+## Test
+${test}
+
+## Questions
+If you have any questions please reach me on [GitHub](https://github.com/${username}) or contact me via my email ${email}.
+`;
+
+  writeToFile(readMe);
 });
 
 function writeToFile(data) {
