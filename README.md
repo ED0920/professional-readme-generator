@@ -29,4 +29,4 @@ THEN I am taken to the corresponding section of the README
 ```
 
 GitHub Repo - https://github.com/ED0920/professional-readme-generator
-![readme-gen.webm](https://user-images.githubusercontent.com/112467697/214291025-e06e69ed-bcc0-42e4-aed5-701069986117.webm)
+
