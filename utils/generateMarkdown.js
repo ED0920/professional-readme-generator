@@ -7,7 +7,7 @@ const GPL =
 const BSD =
   "[![License](https://img.shields.io/badge/License-BSD_3--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)";
 
-// TODO: Create a function that returns a license badge based on which license is passed in
+// function that returns a license badge based on which license is passed in
 
 function generateBadge(licence) {
   if (licence === "MIT") {
